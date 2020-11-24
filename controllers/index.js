@@ -1,4 +1,4 @@
-const { vendor: Vendor } = require('../models');
+const { vendor: Vendor, dish: Dish } = require('../models');
 
 module.exports = class vendor_controller {
   static async get_vendors(_, res) {
@@ -23,7 +23,6 @@ module.exports = class vendor_controller {
 
       res.status(201).json(result);
     } catch (error) {
-      console.log(error.errors[0].validatorKey);
       const reason = error.errors[0].message;
 
       if (reason) {
@@ -80,6 +79,22 @@ module.exports = class vendor_controller {
       res.status(500).json({
         "error": `Internal Server Error: Couldn't delete '${req.params.id}'; At function name: delete_vendor`
       });
+    }
+  }
+
+  static async get_dishes(req, res) {
+    try {
+      const result = await Vendor.findOne({
+        where: {
+          id: req.params.id
+        },
+        include: [Dish]
+      });
+
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
     }
   }
 }

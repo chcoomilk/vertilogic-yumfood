@@ -13,7 +13,20 @@ module.exports = {
     */
 
     await queryInterface.bulkInsert('dishes',[{
-      name: ""
+      name: "Indomie",
+      vendor_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      name: "Indomie kuah",
+      vendor_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      name: "Spaghetti Lasagna",
+      vendor_id: 50,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }]);
   },
 
