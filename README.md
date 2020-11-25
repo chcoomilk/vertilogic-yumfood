@@ -26,8 +26,8 @@ Returns filtered existing vendor(s) in database by a tag provided in url query
 ### POST `/vendors/`
 ### Request Body
 >
-  "name": <string>,
-  "logo": <string>
+  "name": "<string>",
+  "logo": "<string>"
 >
 (Name's length capped at 128 chars)
 Adds a vendor into the database by value provided in request body
@@ -35,8 +35,8 @@ Adds a vendor into the database by value provided in request body
 ### PATCH `/vendors/<id>/`
 ### Request Body
 >
-  "name": <string>,
-  "logo": <string>
+  "name": "<string>",
+  "logo": "<string>"
 >
 Edit existing vendor to a newly inputted value accordingly
   
@@ -52,8 +52,8 @@ Returns order created by user
 ### POST `/order`
 ### Request Body
 >
-  "dish_id": <integer>,
-  "special_request": <string>,
-  "quantity": <integer>
+  "dish_id": "<integer>",
+  "special_request": "<string>",
+  "quantity": "<integer>"
 >
 Adds an order into the database by value provided in request body
