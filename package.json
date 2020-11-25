@@ -4,6 +4,7 @@
   "description": "Food Ordering System In NodeJS, visit https://github.com/klaustinw/yumfood for more additional information",
   "main": "app.js",
   "scripts": {
+    "dev": "npm i && node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,8 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.6",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }
