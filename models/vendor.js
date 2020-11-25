@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      vendor.hasMany(models.dish, { foreignKey: "vendor_id" });
+      vendor.hasMany(models.dish, { foreignKey: 'vendor_id' });
+      vendor.hasMany(models.taggable, { foreignKey: 'taggable_id' });
+      vendor.belongsToMany(models.tag, { through: models.taggable, foreignKey: 'taggable_id', targetKey: 'id' });
     }
   };
   vendor.init({

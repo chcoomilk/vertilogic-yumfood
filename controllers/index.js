@@ -1,11 +1,25 @@
-const { vendor: Vendor, dish: Dish } = require('../models');
+const {
+  vendor: /*as*/ Vendor,
+  dish: Dish,
+  tag: Tag
+} = require('../models');
 
 module.exports = class vendor_controller {
-  static async get_vendors(_, res) {
+  static async get_vendors(req, res) {
     try {
-      const vendors = await Vendor.findAll();
-
-      res.status(200).json(vendors);
+      if (req.query.tags) {
+        const filter_vendors = await Tag.findAll({
+          where: {
+            id: req.query.tags
+          },
+          include: [Vendor]
+        });
+        res.status(200).json(filter_vendors);
+      } else {
+        const vendors = await Vendor.findAll();
+  
+        res.status(200).json(vendors);
+      }
     } catch (error) {
       console.log(error);
       res.status(500).json({
@@ -25,7 +39,7 @@ module.exports = class vendor_controller {
     } catch (error) {
       try {
         const reason = await error.errors[0].message;
-        
+
         res.status(400).json({ "error": `Input Validation Error: ${reason}`, "__ignore_generated": error });
       } catch (error) {
         console.log(error);
