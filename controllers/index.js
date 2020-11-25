@@ -23,11 +23,11 @@ module.exports = class vendor_controller {
 
       res.status(201).json(result);
     } catch (error) {
-      const reason = error.errors[0].message;
-
-      if (reason) {
+      try {
+        const reason = await error.errors[0].message;
+        
         res.status(400).json({ "error": `Input Validation Error: ${reason}`, "__ignore_generated": error });
-      } else {
+      } catch (error) {
         console.log(error);
         res.status(500).json({
           "error": `Internal Server Error: Couldn't put in "vendors"; At function name: put_vendor`

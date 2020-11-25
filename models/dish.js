@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      dish.hasOne(models.order, { foreignKey: "dish_id" });
     }
   };
   dish.init({

@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      order.hasOne(models.dish)
     }
   };
   order.init({
